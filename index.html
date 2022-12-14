@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
+
+    <title>JS Question</title>
+    <style>
+        pre {
+            background-color: white;
+            padding: 15px;
+            border: 3px solid grey;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        pre:hover {
+            background-color: rgb(200, 200, 181);
+            box-shadow: 5px 5px 2px green;
+            transform: scale(0.85);
+        }
+
+        body {
+            background-color: black;
+        }
+
+        p {
+            color: purple;
+            font-size: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: aqua;
+            font-weight: bold;
+            font-size: 5em;
+            margin: 15px;
+        }
+
+        #flex-container {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+        }
+
+        .flex-item-1 {
+            width: 300px;
+            height: 300px;
+            background-color: rgb(78, 74, 69);
+            border: 4px dashed black;
+        }
+
+        #button,
+        #replace,
+        #contentchange,
+        #submit {
+            background-color: green;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        span {
+            color: white;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        #strong {
+            color: yellow;
+            font-size: 3em;
+            font-weight: bold;
+        }
+        label{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="page_header">JS Handson(DOM)</h1>
+    <hr>
+    <div class="container-fluid">
+        <p><b>Write the code to access element which is having id as "text"</b></p>
+        <pre>
+    const reshma = document.getElementById('text')
+  </pre>
+        <hr>
+        <p><b>Write the code to access element which is having tag as "h1"</b></p>
+        <pre>const reshma = document.getElementsByTagName('h1')</pre>
+        <hr>
+
+        <p><b>Write the code to access element which is having class as "box"</b></p>
+        <pre>const reshma = document.getElementsByClassName('box')</pre>
+        <hr>
+
+        <p><b>Change the heading from ""Hello"" to ""Hello World"" using DOM functions"
+
+        <pre>
+    document.querySelector('#heading').textContent = "Hello World"
+  </pre>
+        <hr>
+
+        <p><b>Create three cards on HTML page and arrange them using flex property in row or horizontal direction and
+                also create button at the bottom named "Change Flex direction". When user clicks on this button, the
+                cards arrangement should be changed to vertical direction.</b></p>
+        <div id="flex-container">
+            <div class="flex-item-1"></div>
+            <div class="flex-item-1"></div>
+            <div class="flex-item-1"></div>
+
+        </div>
+
+        <button id="button" onclick="onbuttonclick()">Click to Change</button>
+        <pre>
+    function onbuttonclick(){
+        var flex = document.getElementById('flex-container')
+        if(flex.style.flexDirection == "row"){
+            flex.style.flexDirection = "column"
+            console.log('column');
+        }
+        else{
+            flex.style.flexDirection = "row"
+            console.log('row');
+    
+        }
+    }
+  </pre>
+
+        <p><b>What’s the difference between window vs document?</b></p>
+        <pre>
+    The window object is the topmost object of the DOM hierarchy. It represents a browser window or frame that displays the contents of the webpage. Whenever a window appears on the screen to display the contents of the document, the window object is created.
+    The document object represent a web page that is loaded in the browser. By accessing the document object, we can access the element in the HTML page.
+
+  </pre>
+
+        <p><b>
+Add one style attribute and give text color as red and id attribute and give the id value as ""heading""
+                in the above given h1 tag using DOM functions"
+            </b></p>
+        <h3>Hello </h3>
+        <pre>
+    const reshma = document.getElementsByTagName('h3')[0]
+    reshma.setAttribute("id", "new")
+    const change = document.getElementById('new')
+    change.style.color = "red"
+  </pre>
+        <hr>
+
+        <p><b>Create an HTML page having content as Hello world and a button named Replace Text. When user will click on
+                this button page content should be changed to "Welcome to Elevation academy"</b></p>
+        <span id="span">Hello World</span>
+        <button id="replace" onclick="onbuttoncreplace()">Replace Text</button>
+
+        <pre>
+    function onbuttoncreplace(){
+        var spann = document.getElementById('span')
+        spann.textContent = "Elevation Academy"
+      
+    }
+  </pre>
+        <hr>
+        <p><b>Write code to implement timer clock using JS -- display HH:MM:SS -- the time should keep updating every
+                second</b></p>
+
+        <div class="big-time">
+            <span>TIME</span>
+            <span id="hour">00</span>
+            <span>:</span>
+            <span id="minute">00</span>
+            <span>:</span>
+            <span id="sec">00</span>
+            <span id="sessi">AM</span>
+
+        </div>
+        <pre>
+    var sessii = ""
+    const settime1 = () => {
+        var d = new Date()
+        var hr = d.getHours()
+        var mi = d.getMinutes()
+        var se = d.getSeconds()
+       
+    
+    
+        
+        if (hr >= 12) {
+            sessii = 'PM'
+        }
+        else {
+            sessii = 'AM'
+        }
+    
+        if (hr > 12) {
+            hr = hr - 12
+        }
+    
+    
+        document.getElementById('hour').innerText = hr
+        document.getElementById('minute').innerText = mi
+        document.getElementById('sec').innerText = se
+        document.querySelector('#sessi').innerText = sessii
+    
+    }
+    settime1();
+    setInterval(settime1, 1000)
+</pre>
+        <hr>
+
+        <p><b>Create a select drop down for selecting Year 20-21, 21-22 etc. Print the item text selected</b></p>
+
+        <select name="seleclt" id="select">
+            <option value="Select">---Select---</option>
+            <option value="Car">Car</option>
+            <option value="Bike">Bike</option>
+            <option value="Bus">Bus</option>
+            <option value="Truck">Truck</option>
+
+
+        </select>
+        <button id="contentchange" onclick="onbuttonccontent()">Content Selected</button>
+
+        <br>
+        <strong id="strong"></strong>
+        <pre>
+    function onbuttonccontent(){
+        const selectvalue = document.getElementById('select').value
+        document.getElementById('strong').innerText = selectvalue
+        
+    }
+</pre>
+        <hr>
+        <p><b>"Create a form having name ,email, phone no. , birth year
+                Add validations - phone no. should start with 91 , it should be 10 digits
+                email should be domain prepbytes.com
+                birth year should be > 95"</b></p>
+        <label for="name">Name :</label>
+        <br>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="email">Email :</label>
+        <br>
+        <input type="email" name="email" id="email">
+        <br>
+        <label for="number">Contact :</label>
+        <br>
+        <input type="number" name="number" id="number">
+        <br>
+        <label for="year">Name :</label>
+        <br>
+        <input type="number" name="year" id="year">
+        <br>
+        <button id="submit">Submit</button>
+        <br>
+
+        <pre>
+
+ </pre>
+
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
